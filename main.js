@@ -13,7 +13,7 @@ const SKILLS = {Marketing:["Social Media Marketing","SEO","Meta Ads","Content St
 const TOOLS = [["Canva",1],["CapCut",1],["Photoshop",1],["Premiere Pro",1],["Meta Ads Manager",1],["Google Analytics",1],["Shopify",1],["Liquid",1],["Figma",1],["ChatGPT / AI tools",1]]; // set 0 to hide a tool
 /* Add a project = add one line. cat: Marketing | Video | Design | Shopify. Set sample:0 and a link when it's real. */
 const PROJECTS = [
- {t:"Sri Sai Herbals: Brand Logo",cat:"Design",d:"Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",tools:["Brand Identity","Logo Design"],sample:0,img:"images/sri-sai-herbals-logo.webp",note:"Client project · Logo only",g:"#15803d,#c9a24b",link:""},
+ {t:"Sri Sai Herbals: Brand Logo",cat:"Design",d:"Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",tools:["Brand Identity","Logo Design"],sample:0,img:"sri-sai-herbals-logo.webp",note:"Client project · Logo only",g:"#15803d,#c9a24b",link:""},
  {t:"Social Media Campaign",cat:"Marketing",d:"Concept campaign plan with content calendar and ad creatives.",tools:["Canva","Meta Ads"],sample:1,g:"#2563ff,#0b1220",link:""},
  {t:"Instagram Reels Project",cat:"Video",d:"Short-form edit with captions, transitions and sound design.",tools:["CapCut","Premiere Pro"],sample:1,g:"#0b1220,#6d28d9",link:""},
  {t:"Brand Social Media Kit",cat:"Design",d:"Post, story and highlight templates for a sample brand.",tools:["Photoshop","Figma"],sample:1,g:"#c9a24b,#0b1220",link:""},
@@ -22,7 +22,7 @@ const PROJECTS = [
  {t:"Product Promotion Campaign",cat:"Marketing",d:"Launch concept across Instagram and paid ads.",tools:["Meta Ads","Analytics"],sample:1,g:"#15803d,#0b1220",link:""}];
 /* Testimonials: paste the client's REAL words in q:"..." . Entries with empty q stay hidden. */
 const TESTIMONIALS = [
- {q:"The work was completely satisfied and it meets my expectations",n:"Sri Sai Herbals",r:"Owner · Logo design project",img:"images/sri-sai-herbals-logo.webp"}];
+ {q:"The work was completely satisfied and it meets my expectations",n:"Sri Sai Herbals",r:"Owner · Logo design project",img:"sri-sai-herbals-logo.webp"}];
 const STEPS = [["Discover","Understand the client's business, audience, goals, and requirements."],["Plan","Develop the creative direction, strategy, and project plan."],["Create","Design, edit, develop, or execute the required solution."],["Refine","Review the work and make improvements based on feedback."],["Deliver","Deliver the final project in the required format."]];
 const WHY = [["Creative + Technical","Combining design, marketing, editing, and development skills."],["Client-Focused","Understanding the objective before creating the solution."],["Continuous Learning","Constantly improving skills and exploring new digital tools."],["Flexible","Able to work across different digital requirements."]];
 const WHO = ["Small Businesses","Startups","Personal Brands","Content Creators","E-commerce Businesses","Local Businesses","Student Entrepreneurs","Online Brands"];
