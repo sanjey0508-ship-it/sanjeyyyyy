@@ -81,3 +81,4 @@ section h1{font-size:clamp(28px,4.4vw,46px);letter-spacing:-.02em;margin-bottom:
 @media(max-width:960px){.links a.on{border-bottom:0;padding-bottom:6px;color:var(--blue)}}body.menu-open .wa{display:none}
 .pic img{object-position:center 18%}
 img{height:auto}.pic img{height:100%}.about img{height:auto;width:100%;aspect-ratio:1;max-height:560px}
+.proj.wip{border-style:dashed;background:transparent}.proj.wip:hover{transform:none;box-shadow:none}.proj.wip .th{background:repeating-linear-gradient(135deg,var(--card),var(--card) 10px,var(--bg) 10px,var(--bg) 20px);border:1px dashed var(--line);color:var(--mute);align-items:center;justify-content:center}

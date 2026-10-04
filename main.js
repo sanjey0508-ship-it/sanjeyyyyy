@@ -13,16 +13,15 @@ const SKILLS = {Marketing:["Social Media Marketing","SEO","Meta Ads","Content St
 const TOOLS = [["Canva",1],["CapCut",1],["Photoshop",1],["Premiere Pro",1],["Meta Ads Manager",1],["Google Analytics",1],["Shopify",1],["Liquid",1],["Figma",1],["ChatGPT / AI tools",1]]; // set 0 to hide a tool
 /* Add a project = add one line. cat: Marketing | Video | Design | Shopify. Set sample:0 and a link when it's real. */
 const PROJECTS = [
- {t:"Sri Sai Herbals: Brand Logo",cat:"Design",d:"Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",tools:["Brand Identity","Logo Design"],sample:0,img:"sri-sai-herbals-logo.webp",note:"Client project · Logo only",g:"#15803d,#c9a24b",link:""},
- {t:"Social Media Campaign",cat:"Marketing",d:"Concept campaign plan with content calendar and ad creatives.",tools:["Canva","Meta Ads"],sample:1,g:"#2563ff,#0b1220",link:""},
- {t:"Instagram Reels Project",cat:"Video",d:"Short-form edit with captions, transitions and sound design.",tools:["CapCut","Premiere Pro"],sample:1,g:"#0b1220,#6d28d9",link:""},
- {t:"Brand Social Media Kit",cat:"Design",d:"Post, story and highlight templates for a sample brand.",tools:["Photoshop","Figma"],sample:1,g:"#c9a24b,#0b1220",link:""},
- {t:"E-commerce Store Concept",cat:"Shopify",d:"Responsive storefront concept with custom collections.",tools:["Shopify","Liquid"],sample:1,g:"#0e7490,#0b1220",link:""},
- {t:"Event Promotional Creative",cat:"Design",d:"Poster and banner set for a sample event.",tools:["Photoshop","Canva"],sample:1,g:"#be123c,#0b1220",link:""},
- {t:"Product Promotion Campaign",cat:"Marketing",d:"Launch concept across Instagram and paid ads.",tools:["Meta Ads","Analytics"],sample:1,g:"#15803d,#0b1220",link:""}];
+ {t:"Sri Sai Herbals: Brand Logo",cat:"Design",d:"Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",tools:["Brand Identity","Logo Design"],sample:0,img:"sri-sai-herbals-logo.webp",note:"Client project · Logo only",g:"#15803d,#c9a24b",link:""}];
 /* Testimonials: paste the client's REAL words in q:"..." . Entries with empty q stay hidden. */
 const TESTIMONIALS = [
  {q:"The work was completely satisfied and it meets my expectations",n:"Sri Sai Herbals",r:"Owner · Logo design project",img:"sri-sai-herbals-logo.webp"}];
+/* In-progress placeholders (no fake projects). Delete a line when real work for that category is added. */
+const WIP = [
+ {cat:"Video",t:"Video Editing Work",d:"Reels, Shorts and promo edits are in progress. New work will be added here soon."},
+ {cat:"Marketing",t:"Digital Marketing Work",d:"Campaign and social media projects are in progress. Case studies coming soon."},
+ {cat:"Shopify",t:"Shopify Store Work",d:"Store builds and customizations are in progress. Live links coming soon."}];
 const STEPS = [["Discover","Understand the client's business, audience, goals, and requirements."],["Plan","Develop the creative direction, strategy, and project plan."],["Create","Design, edit, develop, or execute the required solution."],["Refine","Review the work and make improvements based on feedback."],["Deliver","Deliver the final project in the required format."]];
 const WHY = [["Creative + Technical","Combining design, marketing, editing, and development skills."],["Client-Focused","Understanding the objective before creating the solution."],["Continuous Learning","Constantly improving skills and exploring new digital tools."],["Flexible","Able to work across different digital requirements."]];
 const WHO = ["Small Businesses","Startups","Personal Brands","Content Creators","E-commerce Businesses","Local Businesses","Student Entrepreneurs","Online Brands"];
@@ -33,7 +32,7 @@ if($("#svc"))$("#svc").innerHTML=SERVICES.map(s=>`<article class="card"><div cla
 const showSk=k=>$("#sk").innerHTML=`<div class="card"><h3>${k}</h3><div class="chips">${SKILLS[k].map(x=>`<span>${x}</span>`).join("")}</div></div>`;
 if($("#stabs")){tabs($("#stabs"),Object.keys(SKILLS),showSk,"Marketing");showSk("Marketing")}
 if($("#tools"))$("#tools").innerHTML=TOOLS.filter(t=>t[1]).map(t=>`<span>${t[0]}</span>`).join("");
-if($("#proj"))$("#proj").innerHTML=PROJECTS.map(p=>`<article class="card proj" data-c="${p.cat}">${p.img?`<div class="th img"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`:`<div class="th" style="background:linear-gradient(135deg,${p.g})">${p.cat}</div>`}<small>${p.cat}</small>${p.sample?'<span class="badge">Sample</span>':""}<h3 style="font-size:19px;margin:6px 0">${p.t}</h3><p>${p.d}</p><div class="chips" style="margin:0 0 14px">${p.tools.map(x=>`<span>${x}</span>`).join("")}</div>${p.link?`<a class="more" href="${p.link}" target="_blank" rel="noopener">View Project →</a>`:'<span class="more" style="opacity:.5">${p.note||"Case study coming soon"}</span>'}</article>`).join("");
+if($("#proj"))$("#proj").innerHTML=PROJECTS.concat(WIP.map(w=>({...w,wip:1}))).map(p=>p.wip?`<article class="card proj wip" data-c="${p.cat}"><div class="th">⏳ In Progress</div><small>${p.cat}</small><h3 style="font-size:19px;margin:6px 0">${p.t}</h3><p>${p.d}</p></article>`:`<article class="card proj${p.wip?" wip":""}" data-c="${p.cat}">${p.img?`<div class="th img"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`:`<div class="th" style="background:linear-gradient(135deg,${p.g})">${p.cat}</div>`}<small>${p.cat}</small>${p.sample?'<span class="badge">Sample</span>':""}<h3 style="font-size:19px;margin:6px 0">${p.t}</h3><p>${p.d}</p><div class="chips" style="margin:0 0 14px">${p.tools.map(x=>`<span>${x}</span>`).join("")}</div>${p.link?`<a class="more" href="${p.link}" target="_blank" rel="noopener">View Project →</a>`:`<span class="more" style="opacity:.6">${p.note||"Case study coming soon"}</span>`}</article>`).join("");
 const filt=k=>document.querySelectorAll(".proj").forEach(c=>c.classList.toggle("hide",k!=="All"&&c.dataset.c!==k));
 if($("#ftabs")){tabs($("#ftabs"),["All","Marketing","Video","Design","Shopify"],filt,"All");const qf=new URLSearchParams(location.search).get("f");if(qf){const qb=[...document.querySelectorAll("#ftabs .tab")].find(t=>t.dataset.k===qf);qb&&qb.click()}}
 document.querySelectorAll("[data-f]").forEach(a=>a.addEventListener("click",()=>{const b=[...document.querySelectorAll("#ftabs .tab")].find(t=>t.dataset.k===a.dataset.f);b&&b.click()}));
