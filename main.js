@@ -2,7 +2,7 @@
 const CONTACT_EMAIL = "sanjey0508@gmail.com"; // enquiries are delivered to this inbox
 /* Social + chat. WHATSAPP = country code + number, digits only (e.g. "919876543210"). Leave "" to hide. */
 /* Paste your Apps Script Web App URL here (see apps-script.gs). Leave "" to keep using FormSubmit. */
-const SHEET_URL="https://script.google.com/macros/s/AKfycbzNKlIOqy9V9x7iBB0TuTtnJtFX74IEj88bBrpK0ZvRRNBqe39sYGw5EtqHmtbMG_Qhew/exec";
+const SHEET_URL="https://script.google.com/macros/s/AKfycbzIxCJAdXRCTzd9CR-6T6zErN9tiYYpYra-YHF_r3uYW844ElEyHytEyAIQPBCF8pDQEw/exec";
 const WHATSAPP = "919361381605";
 const INSTAGRAM = "https://instagram.com/Sanjuu_CreovX"; // full link, e.g. "https://instagram.com/yourname"
 const LINKEDIN = "";  // full link
