@@ -1,0 +1,43 @@
+{
+  "projects": [
+    {
+      "t": "Sri Sai Herbals: Brand Logo",
+      "cat": "Design",
+      "d": "Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",
+      "tools": [
+        "Brand Identity",
+        "Logo Design"
+      ],
+      "sample": false,
+      "img": "sri-sai-herbals-logo.webp",
+      "note": "Client project · Logo only",
+      "g": "#15803d,#c9a24b",
+      "link": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "q": "The work was completely satisfied and it meets my expectations",
+      "n": "Sri Sai Herbals",
+      "r": "Owner · Logo design project",
+      "img": "sri-sai-herbals-logo.webp"
+    }
+  ],
+  "wip": [
+    {
+      "cat": "Video",
+      "t": "Video Editing Work",
+      "d": "Reels, Shorts and promo edits are in progress. New work will be added here soon."
+    },
+    {
+      "cat": "Marketing",
+      "t": "Digital Marketing Work",
+      "d": "Campaign and social media projects are in progress. Case studies coming soon."
+    },
+    {
+      "cat": "Shopify",
+      "t": "Shopify Store Work",
+      "d": "Store builds and customizations are in progress. Live links coming soon."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+media:
+  input: media
+  output: /media
+content:
+  - name: site
+    label: Website Content
+    type: file
+    path: content.json
+    format: json
+    fields:
+      - name: projects
+        label: Projects
+        type: object
+        list: true
+        fields:
+          - { name: t, label: Title, type: string }
+          - { name: cat, label: Category, type: select, options: { values: [Marketing, Video, Design, Shopify] } }
+          - { name: d, label: Description, type: text }
+          - { name: tools, label: Tags / Tools, type: string, list: true }
+          - { name: img, label: Image, type: image }
+          - { name: link, label: Project link (optional), type: string }
+          - { name: note, label: Note (shown if no link), type: string }
+          - { name: sample, label: Is this a sample project?, type: boolean }
+          - { name: g, label: Gradient colours (if no image), type: string }
+      - name: testimonials
+        label: Testimonials
+        type: object
+        list: true
+        fields:
+          - { name: q, label: Client's words, type: text }
+          - { name: n, label: Client / Brand name, type: string }
+          - { name: r, label: Role · Project, type: string }
+          - { name: img, label: Logo / photo, type: image }
+      - name: wip
+        label: "In-progress cards (delete once real work is added)"
+        type: object
+        list: true
+        fields:
+          - { name: cat, label: Category, type: select, options: { values: [Marketing, Video, Design, Shopify] } }
+          - { name: t, label: Title, type: string }
+          - { name: d, label: Description, type: text }

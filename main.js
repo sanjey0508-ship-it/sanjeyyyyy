@@ -1,6 +1,8 @@
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const CONTACT_EMAIL = "sanjey0508@gmail.com"; // enquiries are delivered to this inbox
 /* Social + chat. WHATSAPP = country code + number, digits only (e.g. "919876543210"). Leave "" to hide. */
+/* Paste your Apps Script Web App URL here (see apps-script.gs). Leave "" to keep using FormSubmit. */
+const SHEET_URL="https://script.google.com/macros/s/AKfycbzNKlIOqy9V9x7iBB0TuTtnJtFX74IEj88bBrpK0ZvRRNBqe39sYGw5EtqHmtbMG_Qhew/exec";
 const WHATSAPP = "919361381605";
 const INSTAGRAM = "https://instagram.com/Sanjuu_CreovX"; // full link, e.g. "https://instagram.com/yourname"
 const LINKEDIN = "";  // full link
@@ -11,17 +13,8 @@ const SERVICES = [
  {i:"🛍️",t:"Shopify Development",d:"Building clean, responsive, and conversion-focused Shopify storefronts for businesses and entrepreneurs.",l:["Store Setup","Theme Customization","Store Design","Product Setup","Navigation","Collection Setup","Basic Shopify SEO","Responsive Design","Basic Liquid Customization","Store Optimization"],c:"View Shopify Work",f:"Shopify"}];
 const SKILLS = {Marketing:["Social Media Marketing","SEO","Meta Ads","Content Strategy","Analytics"],Video:["Short-form Editing","Reels","YouTube Shorts","Captions","Basic Motion Graphics"],Design:["Graphic Design","Social Media Design","Posters","Thumbnails","Branding Basics"],Shopify:["Store Setup","Theme Customization","Liquid","E-commerce Design","Basic SEO"]};
 const TOOLS = [["Canva",1],["CapCut",1],["Photoshop",1],["Premiere Pro",1],["Meta Ads Manager",1],["Google Analytics",1],["Shopify",1],["Liquid",1],["Figma",1],["ChatGPT / AI tools",1]]; // set 0 to hide a tool
-/* Add a project = add one line. cat: Marketing | Video | Design | Shopify. Set sample:0 and a link when it's real. */
-const PROJECTS = [
- {t:"Sri Sai Herbals: Brand Logo",cat:"Design",d:"Logo design for an Ayurvedic herbal brand, built around a lotus, hibiscus and leaf motif in green and gold.",tools:["Brand Identity","Logo Design"],sample:0,img:"sri-sai-herbals-logo.webp",note:"Client project · Logo only",g:"#15803d,#c9a24b",link:""}];
-/* Testimonials: paste the client's REAL words in q:"..." . Entries with empty q stay hidden. */
-const TESTIMONIALS = [
- {q:"The work was completely satisfied and it meets my expectations",n:"Sri Sai Herbals",r:"Owner · Logo design project",img:"sri-sai-herbals-logo.webp"}];
-/* In-progress placeholders (no fake projects). Delete a line when real work for that category is added. */
-const WIP = [
- {cat:"Video",t:"Video Editing Work",d:"Reels, Shorts and promo edits are in progress. New work will be added here soon."},
- {cat:"Marketing",t:"Digital Marketing Work",d:"Campaign and social media projects are in progress. Case studies coming soon."},
- {cat:"Shopify",t:"Shopify Store Work",d:"Store builds and customizations are in progress. Live links coming soon."}];
+/* Projects, testimonials and in-progress cards now live in content.json (edit via Pages CMS) */
+let PROJECTS=[],TESTIMONIALS=[],WIP=[];
 const STEPS = [["Discover","Understand the client's business, audience, goals, and requirements."],["Plan","Develop the creative direction, strategy, and project plan."],["Create","Design, edit, develop, or execute the required solution."],["Refine","Review the work and make improvements based on feedback."],["Deliver","Deliver the final project in the required format."]];
 const WHY = [["Creative + Technical","Combining design, marketing, editing, and development skills."],["Client-Focused","Understanding the objective before creating the solution."],["Continuous Learning","Constantly improving skills and exploring new digital tools."],["Flexible","Able to work across different digital requirements."]];
 const WHO = ["Small Businesses","Startups","Personal Brands","Content Creators","E-commerce Businesses","Local Businesses","Student Entrepreneurs","Online Brands"];
@@ -32,11 +25,14 @@ if($("#svc"))$("#svc").innerHTML=SERVICES.map(s=>`<article class="card"><div cla
 const showSk=k=>$("#sk").innerHTML=`<div class="card"><h3>${k}</h3><div class="chips">${SKILLS[k].map(x=>`<span>${x}</span>`).join("")}</div></div>`;
 if($("#stabs")){tabs($("#stabs"),Object.keys(SKILLS),showSk,"Marketing");showSk("Marketing")}
 if($("#tools"))$("#tools").innerHTML=TOOLS.filter(t=>t[1]).map(t=>`<span>${t[0]}</span>`).join("");
+function renderContent(){
 if($("#proj"))$("#proj").innerHTML=PROJECTS.concat(WIP.map(w=>({...w,wip:1}))).map(p=>p.wip?`<article class="card proj wip" data-c="${p.cat}"><div class="th">⏳ In Progress</div><small>${p.cat}</small><h3 style="font-size:19px;margin:6px 0">${p.t}</h3><p>${p.d}</p></article>`:`<article class="card proj${p.wip?" wip":""}" data-c="${p.cat}">${p.img?`<div class="th img"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`:`<div class="th" style="background:linear-gradient(135deg,${p.g})">${p.cat}</div>`}<small>${p.cat}</small>${p.sample?'<span class="badge">Sample</span>':""}<h3 style="font-size:19px;margin:6px 0">${p.t}</h3><p>${p.d}</p><div class="chips" style="margin:0 0 14px">${p.tools.map(x=>`<span>${x}</span>`).join("")}</div>${p.link?`<a class="more" href="${p.link}" target="_blank" rel="noopener">View Project →</a>`:`<span class="more" style="opacity:.6">${p.note||"Case study coming soon"}</span>`}</article>`).join("");
 const filt=k=>document.querySelectorAll(".proj").forEach(c=>c.classList.toggle("hide",k!=="All"&&c.dataset.c!==k));
 if($("#ftabs")){tabs($("#ftabs"),["All","Marketing","Video","Design","Shopify"],filt,"All");const qf=new URLSearchParams(location.search).get("f");if(qf){const qb=[...document.querySelectorAll("#ftabs .tab")].find(t=>t.dataset.k===qf);qb&&qb.click()}}
 document.querySelectorAll("[data-f]").forEach(a=>a.addEventListener("click",()=>{const b=[...document.querySelectorAll("#ftabs .tab")].find(t=>t.dataset.k===a.dataset.f);b&&b.click()}));
 if($("#testi")){const T=TESTIMONIALS.filter(x=>x.q.trim());if(T.length){$("#testimonials").style.display="";$("#testi").innerHTML=T.map(x=>`<figure class="card tq"><blockquote>“${x.q}”</blockquote><figcaption>${x.img?`<img src="${x.img}" alt="${x.n} logo">`:""}<span><b>${x.n}</b><small>${x.r}</small></span></figcaption></figure>`).join("")}}
+}
+if($("#proj")||$("#testi"))fetch("content.json",{cache:"no-cache"}).then(r=>r.json()).then(c=>{PROJECTS=c.projects||[];WIP=c.wip||[];TESTIMONIALS=c.testimonials||[];renderContent()}).catch(()=>{/* keep prerendered HTML */});
 if($("#steps"))$("#steps").innerHTML=STEPS.map(s=>`<div class="card step"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
 if($("#why"))$("#why").innerHTML=WHY.map(w=>`<div class="card"><h3 style="font-size:19px">${w[0]}</h3><p>${w[1]}</p></div>`).join("");
 if($("#who"))$("#who").innerHTML=WHO.map(w=>`<span>${w}</span>`).join("");
@@ -62,9 +58,9 @@ if($("#form"))$("#form").onsubmit=async e=>{e.preventDefault();const f=e.target,
  const data={name:v("name"),email:v("email"),brand:v("brand"),service:v("service"),budget:v("budget"),deadline:v("deadline"),message:v("desc"),_subject:"New project enquiry: "+v("service"),_replyto:v("email"),_template:"table",_captcha:"false"};
  btn.disabled=true;ok.textContent="Sending...";
  try{
-  const r=await fetch("https://formsubmit.co/ajax/"+CONTACT_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)});
+  const r=await fetch(SHEET_URL||"https://formsubmit.co/ajax/"+CONTACT_EMAIL,SHEET_URL?{method:"POST",body:JSON.stringify(data)}:{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)});
   const j=await r.json();
-  if(!r.ok||j.success==="false"||j.success===false)throw new Error(j.message||"failed");
+  if(!r.ok||j.ok===false||j.success==="false"||j.success===false)throw new Error(j.message||"failed");
   f.reset();ok.textContent="Thanks! Your enquiry has been sent. I'll get back to you soon."
  }catch(err){
   const body=`Name: ${data.name}\nEmail: ${data.email}\nBrand: ${data.brand}\nService: ${data.service}\nBudget: ${data.budget}\nDeadline: ${data.deadline}\n\n${data.message}`;
