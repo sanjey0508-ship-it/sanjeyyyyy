@@ -8,10 +8,11 @@
         "Brand Identity",
         "Logo Design"
       ],
+      "sample": false,
       "img": "sri-sai-herbals-logo.webp",
       "note": "Client project · Logo only",
-      "sample": false,
-      "g": "#15803d,#c9a24b"
+      "g": "#15803d,#c9a24b",
+      "link": ""
     }
   ],
   "testimonials": [
@@ -34,9 +35,9 @@
       "d": "Campaign and social media projects are in progress. Case studies coming soon."
     },
     {
-      "cat": "Shopify",
-      "t": "Shopify Store Work",
-      "d": "Store builds and customizations are in progress. Live links coming soon."
+      "cat": "Web",
+      "t": "Web Development Work",
+      "d": "Website builds and landing pages are in progress. Live links coming soon."
     }
   ]
 }
